@@ -7,6 +7,8 @@ import { fetchDataFromApi } from "../../utils/api";
 import { Context } from "../../utils/context";
 import Select from 'react-select'
 import { Slider } from "@mui/material";
+import bird1 from '../../assets/littleBird1.gif'
+import bird2 from '../../assets/littleBird2.gif'
 
 const Home = () => {
     const [value, setValue] = React.useState([0,50000]);
@@ -52,6 +54,7 @@ const Home = () => {
                 <div className="lineCon">
                 <div className="line"></div>
                 </div>
+
    <div className="selectsContainer">
   <div>
   <label>Select Catagorie</label>

@@ -2,6 +2,8 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import "./Product.scss";
 import Slider from "react-slick";
+import { CgShoppingCart } from "react-icons/cg";
+
 
 const Product = ({ data, id }) => {
     const settings = {
@@ -24,7 +26,11 @@ const Product = ({ data, id }) => {
         </Slider>
         <h3>Birds Flying In Air</h3>
         <p className="descriptionofproduct">The Wold best bird fount in austalia is that bird this is in very cheap rate only one left</p>
-        <p><b>5000PKR</b></p>
+      <div>
+      <p><b>5000PKR</b></p>
+        <CgShoppingCart />
+
+      </div>
     </div>
     );
 };
