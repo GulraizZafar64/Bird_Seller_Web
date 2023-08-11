@@ -38,16 +38,13 @@ const SingleProduct = () => {
                 <div className="single-product-page">
                     <div className="left">
                         <img
-                            src={
-                                process.env.REACT_APP_STRIPE_APP_DEV_URL +
-                                product.image.data[0].attributes.url
-                            }
+                            src="https://imgd.aeplcdn.com/1056x594/n/cw/ec/44686/activa-6g-right-front-three-quarter.jpeg?q=75&q=75"
                         />
                     </div>
                     <div className="right">
-                        <span className="name">{product.title}</span>
-                        <span className="price">&#8377;{product.price}</span>
-                        <span className="desc">{product.description}</span>
+                        <span className="name">youp</span>
+                        <span className="price">&#8377;$5345</span>
+                        <span className="desc">sdj fsbfh fdshfd fdfhdfd fdhjfsd fhd sdfhsdfsf sd</span>
 
                         <div className="cart-buttons">
                             <div className="quantity-buttons">
@@ -72,10 +69,10 @@ const SingleProduct = () => {
                             <span className="text-bold">
                                 Category:{" "}
                                 <span>
-                                    {
+                                    {/* {
                                         product.categories.data[0].attributes
                                             .title
-                                    }
+                                    } */}
                                 </span>
                             </span>
                             <span className="text-bold">
@@ -91,10 +88,10 @@ const SingleProduct = () => {
                         </div>
                     </div>
                 </div>
-                <RelatedProducts
+                {/* <RelatedProducts
                     productId={id}
                     categoryId={product.categories.data[0].id}
-                />
+                /> */}
             </div>
         </div>
     );

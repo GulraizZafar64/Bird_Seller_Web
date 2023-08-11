@@ -6,17 +6,16 @@ const Category = ({ categories }) => {
     return (
         <div className="shop-by-category">
             <div className="categories">
-                {categories?.data?.map((item) => (
+                {[1,2,3,5,6,7,8]?.map((item) => (
                     <div
                         key={item.id}
                         className="category"
                         onClick={() => navigate(`/category/${item.id}`)}
                     >
                         <img
-                            src={
-                                process.env.REACT_APP_STRIPE_APP_DEV_URL +
-                                item.attributes.img.data.attributes.url
-                            }
+                            src="
+                                https://imgd.aeplcdn.com/1056x594/n/cw/ec/44686/activa-6g-right-front-three-quarter.jpeg?q=75&q=75
+                            "
                         />
                     </div>
                 ))}

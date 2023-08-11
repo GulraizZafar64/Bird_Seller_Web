@@ -1,10 +1,64 @@
 @import "../../css-config/mixins.scss";
-.main-content {
-    .layout {
-        max-width: calc(100% - 20px);
-        margin: 0 auto;
-        @include md {
-            max-width: 1200px;
+@import '../../App.scss';
+.catagorieCardContainer{
+       padding: 0 50px;
+    .catagorieCard{
+        width: 100%;
+        height: fit-content;
+        background-color: white;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+        margin-top: -30px;
+        margin-bottom: 20px;
+        z-index: 1111;
+        border-radius: 5px;
+        padding: 20px 0px;
+        .selectsContainer{
+            display: flex;
+            column-gap: 20px;
+            justify-content: center;
+            margin-top: 20px;
+            .basic-single{
+                width: 400px !important;
+            }
+          
+            .mainRangeWrapper{
+                .rangeLabel{
+                    display: flex;
+                    justify-content: space-between;
+                }
+                .rangepaker{
+                    text-align: center;
+                    border-radius: 20px;
+                    padding: 5px;
+                    width: 350px;
+                    height: fit-content;
+                    background-color: rgb(235, 235, 235);
+                }
+            }
+            .css-187mznn-MuiSlider-root{
+              width: 300px !important;
+              color: $myColor !important;
+            }
+        }
+        h1{
+            text-align: center;
+            font-family: $myFont;
+            color: $myColor;
+        }
+        .lineCon{
+            display: flex;
+            justify-content: center;
+            width: 100%;
+            padding: 10px 0px;
+        }
+        .line{
+            height: 2px;
+            border: 3px solid $myColor;
+            background-color: $myColor;
+            place-content: center;
+            width: 200px;
+            border-radius: 10px;
         }
     }
 }
+
