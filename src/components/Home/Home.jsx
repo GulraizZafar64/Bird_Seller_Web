@@ -1,4 +1,4 @@
-import React, { useEffect, useContext } from "react";
+import React, { useEffect, useContext, useState } from "react";
 import "./Home.scss";
 import Banner from "./Banner/Banner";
 import Category from "./Category/Category";
@@ -9,30 +9,63 @@ import Select from 'react-select'
 import { Slider } from "@mui/material";
 import bird1 from '../../assets/littleBird1.gif'
 import bird2 from '../../assets/littleBird2.gif'
+import { baseUrl } from "../../config";
 
 const Home = () => {
     const [value, setValue] = React.useState([0,50000]);
+    const [category,setCategory]=useState([])
+    const [allCategory,setAllCategory]=useState([])
+    const [subCategory,setSubCategory]=useState([])
     function valuetext(value) {
         return `${value}°PKR`;
       }
       const minDistance = 0;
-    const { products, setProducts, categories, setCategories } =
-        useContext(Context);
-    useEffect(() => {
-        getProducts();
-        getCategories();
-    }, []);
+   
 
-    const getProducts = () => {
-        fetchDataFromApi("/api/products?populate=*").then((res) => {
-            setProducts(res);
-        });
-    };
-    const getCategories = () => {
-        fetchDataFromApi("/api/categories?populate=*").then((res) => {
-            setCategories(res);
-        });
-    };
+      useEffect(() => {
+        getBirds()
+        getCategory()
+    }, [])
+    const [birds,setBirds]=useState([])
+    const getBirds = () => {
+        fetch(`${baseUrl}/getBirds`, {
+            method: 'GET',
+            // headers: {
+            //     Authorization: `${authtoken}`,
+            // },
+        }).then(res => res.json())
+            .then((data) => {
+                console.log(data)
+                setBirds(data.products)
+            }).catch(err => {
+                console.log(err)
+            })
+    }
+    const getCategory = () => {
+      fetch(`${baseUrl}/categories`, {
+          method: 'GET',
+   
+      }).then(res => res.json())
+          .then((data) => {
+            setAllCategory(data)
+            let arr=[{label:"Select...",value:"select"}]
+              data.map((item)=>{
+         arr.push({label:item.name,value:item._id})
+              })
+              setCategory(arr)
+          }).catch(err => {
+              console.log(err)
+          })
+  }
+  const onCategoryChange=(id)=>{
+const filterData=  allCategory.find((item)=>item._id==id)
+console.log(filterData)
+let arr=[{label:"Select...",value:"select"}]
+filterData.subcategories?.map((item)=>{
+arr.push({label:item.name,value:item._id})
+})
+setSubCategory(arr)
+}
     const handleRangeChange = (event, newValue, activeThumb) => {
         if (!Array.isArray(newValue)) {
           return;
@@ -61,7 +94,8 @@ const Home = () => {
    <Select
         className="basic-single"
         classNamePrefix="select"
-        options={[{label:"Select...",value:"select"}]}
+        options={category}
+        onChange={(e)=>onCategoryChange(e.value)}
       />
   </div>
   <div>
@@ -69,7 +103,7 @@ const Home = () => {
              <Select
         className="basic-single"
         classNamePrefix="select"
-        options={[{label:"Select...",value:"select"}]}
+        options={subCategory}
       />
   </div>
    
@@ -106,7 +140,7 @@ const Home = () => {
             <div className="main-content">
                   <Products
                         headingText="Popular Products"
-                        products={products}
+                        products={birds}
                     />
         </div>
         </div>
